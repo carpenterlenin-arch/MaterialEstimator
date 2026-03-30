@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="txt-site-title">Construction Material Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilos para el selector de idioma */
+    .lang-switch { text-align: right; margin-bottom: 15px; font-family: Arial, sans-serif; }
+    .lang-link { cursor: pointer; color: #7ef1f1; text-decoration: underline; font-weight: bold; }
+    .lang-link.active { color: #d2d7df; text-decoration: none; cursor: default; }
+    .separator { margin: 0 5px; color: #9ca3af; }
+    .no-print { display: block; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="lang-switch no-print">
+        <span id="btn-es" class="lang-link active" onclick="changeLang('es')">Español</span>
+        <span class="separator">/</span>
+        <span id="btn-en" class="lang-link" onclick="changeLang('en')">English</span>
+      </div>
+      <h1 id="header-title">Construction Material Calculator</h1>
+      <p id="header-desc">Simple estimating tools for walls, roofs, and stairs.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title" id="txt-main-title">Estimator Tools</h1>
+    <p class="page-subtitle" id="txt-main-subtitle">
+      Choose a calculator below. Designed to be quick and easy to use on mobile.
+    </p>
+
+    <section class="tool-grid">
+      <div class="tool-card">
+        <h3 id="txt-wall-title">Wall Calculator</h3>
+        <p id="txt-wall-desc">
+          Estimate studs, plates, sheathing, drywall, rough cut list, and total cost for wood stud walls.
+        </p>
+        <a class="link-btn" href="wall.html" id="btn-wall">Open Wall Calculator</a>
+      </div>
+
+      <div class="tool-card">
+        <h3 id="txt-roof-title">Gable Roof Calculator</h3>
+        <p id="txt-roof-desc">
+          Estimate rafters, ridge, fascia, sheathing, roof sheets, and rough cost for a simple gable roof.
+        </p>
+        <a class="link-btn" href="roof.html" id="btn-roof">Open Roof Calculator</a>
+      </div>
+
+      <div class="tool-card">
+        <h3 id="txt-stair-title">Stair Calculator</h3>
+        <p id="txt-stair-desc">
+          Estimate rise, run, stringers, tread boards, risers, and rough material cost for straight stairs.
+        </p>
+        <a class="link-btn" href="stairs.html" id="btn-stair">Open Stair Calculator</a>
+      </div>
+
+      <div class="tool-card">
+        <h3 id="txt-soon-title">More Tools Coming</h3>
+        <p id="txt-soon-desc">
+          Future calculators can include sheds, pergolas, decks, framing helpers, and cut planners.
+        </p>
+        <a class="link-btn" href="#" id="btn-soon">Coming Soon</a>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2 id="txt-note-title">Important Note</h2>
+      <p class="section-sub" style="margin-bottom: 0;" id="txt-note-desc">
+        These tools are for rough estimating and planning only. Always verify actual dimensions, spans,
+        structural requirements, and local code before building.
+      </p>
+    </section>
+
+    <section class="card about-me-section" style="margin-bottom: 24px;">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            I am a carpentry apprentice and independent carpenter based in Puerto Rico. 
+            I specialize in the design and construction of residential exterior structures 
+            like gazebos, pergolas, and decks.
+          </p>
+          <p>
+            My background in 3D animation and digital modeling allows me to approach 
+            construction with a focus on precision and structural integrity. I developed 
+            these tools to simplify material estimation and help others in the trade 
+            plan their projects more efficiently.
+          </p>
+        </div>
+      </div>
+    </section>    
+    
+  </main>
+
+  <script>
+    const translations = {
+      es: {
+        siteTitle: "Calculadora de Materiales",
+        headerTitle: "Calculadora de Materiales",
+        headerDesc: "Herramientas rápidas para paredes, techos y escaleras.",
+        mainTitle: "Herramientas de Estimado",
+        mainSubtitle: "Escoge una calculadora abajo. Diseñadas para uso rápido en el celular.",
+        wallTitle: "Calculadora de Paredes",
+        wallDesc: "Estima studs, plates, sheathing, drywall y costos totales.",
+        wallBtn: "Abrir Calculadora de Paredes",
+        roofTitle: "Calculadora de Techos",
+        roofDesc: "Estima rafters, ridge, fascia, planchas de zinc y costos.",
+        roofBtn: "Abrir Calculadora de Techos",
+        stairTitle: "Calculadora de Escaleras",
+        stairDesc: "Estima rise, run, stringers, treads y costos de materiales.",
+        stairBtn: "Abrir Calculadora de Escaleras",
+        soonTitle: "Más Herramientas Pronto",
+        soonDesc: "Próximamente: Gazebos, pergolas, decks y optimizadores de corte.",
+        soonBtn: "Próximamente",
+        noteTitle: "Nota Importante",
+        noteDesc: "Estas herramientas son solo para estimados preliminares. Siempre verifique dimensiones y códigos de construcción antes de construir."
+      },
+      en: {
+        siteTitle: "Construction Material Calculator",
+        headerTitle: "Construction Material Calculator",
+        headerDesc: "Simple estimating tools for walls, roofs, and stairs.",
+        mainTitle: "Estimator Tools",
+        mainSubtitle: "Choose a calculator below. Designed to be quick and easy to use on mobile.",
+        wallTitle: "Wall Calculator",
+        wallDesc: "Estimate studs, plates, sheathing, drywall, rough cut list, and total cost.",
+        wallBtn: "Open Wall Calculator",
+        roofTitle: "Gable Roof Calculator",
+        roofDesc: "Estimate rafters, ridge, fascia, sheathing, roof sheets, and rough cost.",
+        roofBtn: "Open Roof Calculator",
+        stairTitle: "Stair Calculator",
+        stairDesc: "Estimate rise, run, stringers, tread boards, risers, and cost.",
+        stairBtn: "Open Stair Calculator",
+        soonTitle: "More Tools Coming",
+        soonDesc: "Future calculators can include sheds, pergolas, decks, and cut planners.",
+        soonBtn: "Coming Soon",
+        noteTitle: "Important Note",
+        noteDesc: "These tools are for rough estimating and planning only. Always verify actual dimensions and local code."
+      }
+    };
+
+    function changeLang(lang) {
+      // Guardar preferencia
+      localStorage.setItem('prefLang', lang);
+      
+      // Actualizar botones UI
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      const t = translations[lang];
+
+      // Aplicar textos
+      document.getElementById('txt-site-title').innerText = t.siteTitle;
+      document.getElementById('header-title').innerText = t.headerTitle;
+      document.getElementById('header-desc').innerText = t.headerDesc;
+      document.getElementById('txt-main-title').innerText = t.mainTitle;
+      document.getElementById('txt-main-subtitle').innerText = t.mainSubtitle;
+      document.getElementById('txt-wall-title').innerText = t.wallTitle;
+      document.getElementById('txt-wall-desc').innerText = t.wallDesc;
+      document.getElementById('btn-wall').innerText = t.wallBtn;
+      document.getElementById('txt-roof-title').innerText = t.roofTitle;
+      document.getElementById('txt-roof-desc').innerText = t.roofDesc;
+      document.getElementById('btn-roof').innerText = t.roofBtn;
+      document.getElementById('txt-stair-title').innerText = t.stairTitle;
+      document.getElementById('txt-stair-desc').innerText = t.stairDesc;
+      document.getElementById('btn-stair').innerText = t.stairBtn;
+      document.getElementById('txt-soon-title').innerText = t.soonTitle;
+      document.getElementById('txt-soon-desc').innerText = t.soonDesc;
+      document.getElementById('btn-soon').innerText = t.soonBtn;
+      document.getElementById('txt-note-title').innerText = t.noteTitle;
+      document.getElementById('txt-note-desc').innerText = t.noteDesc;
+    }
+
+    // Cargar idioma guardado al abrir
+    window.onload = () => {
+      const savedLang = localStorage.getItem('prefLang') || 'es';
+      changeLang(savedLang);
+    };
+  </script>
+</body>
+</html>

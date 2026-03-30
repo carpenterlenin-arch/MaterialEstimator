@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="txt-page-meta-title">Gable Roof Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header no-print">
+    <div class="site-header-inner">
+      <h1 id="txt-site-header-title">Construction Material Calculator</h1>
+      <p id="txt-site-header-desc">Simple estimating tools for framing, roofing, and stairs.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="no-print" style="margin-bottom: 16px;">
+      <a class="link-btn" href="index.html" id="txt-back-home">← Back to Home</a>
+    </div>
+
+    <div class="lang-switch no-print">
+      <span id="btn-es" class="lang-link active" onclick="changeLang('es')">Español</span>
+      <span class="separator">/</span>
+      <span id="btn-en" class="lang-link" onclick="changeLang('en')">English</span>
+    </div>
+
+    <style>
+      .lang-switch { text-align: right; margin-bottom: 15px; font-weight: bold; }
+      .lang-link { cursor: pointer; color: #2563eb; text-decoration: underline; }
+      .lang-link.active { color: #1f2937; text-decoration: none; cursor: default; }
+      .separator { margin: 0 5px; color: #9ca3af; }
+    </style>
+
+    <h1 class="page-title" id="txt-roof-page-title">Gable Roof Calculator</h1>
+    <p class="page-subtitle" id="txt-roof-page-sub">Estimate rafters, ridge, fascia, sheathing, roof sheets, and rough cost for a simple gable roof.</p>
+
+  <main class="main-content">
+    <div class="container">
+
+      <section class="card">
+        <h2 id="txt-setup-title">Roof Setup</h2>
+        <p class="section-sub" id="txt-setup-sub">
+          Enter the basic size and framing layout for your gable roof.
+        </p>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="span" id="lbl-span">Span (ft)</label>
+            <input type="number" id="span" value="12" step="0.01" min="1" />
+          </div>
+
+          <div class="input-group">
+            <label for="structureLength" id="lbl-struct-length">Structure Length (ft)</label>
+            <input type="number" id="structureLength" value="16" step="0.01" min="1" />
+          </div>
+
+          <div class="input-group">
+            <label for="overhang" id="lbl-overhang">Overhang (in)</label>
+            <input type="number" id="overhang" value="12" step="0.125" min="0" />
+          </div>
+
+          <div class="input-group">
+            <label for="pitch" id="lbl-pitch">Roof Pitch</label>
+            <select id="pitch">
+              <option value="1">1 / 12</option>
+              <option value="2">2 / 12</option>
+              <option value="3">3 / 12</option>
+              <option value="4" selected>4 / 12</option>
+              <option value="5">5 / 12</option>
+              <option value="6">6 / 12</option>
+              <option value="7">7 / 12</option>
+              <option value="8">8 / 12</option>
+              <option value="9">9 / 12</option>
+              <option value="10">10 / 12</option>
+              <option value="11">11 / 12</option>
+              <option value="12">12 / 12</option>
+              <option value="13">13 / 12</option>
+              <option value="14">14 / 12</option>
+              <option value="15">15 / 12</option>
+              <option value="16">16 / 12</option>
+              <option value="17">17 / 12</option>
+              <option value="18">18 / 12</option>
+              <option value="19">19 / 12</option>
+              <option value="20">20 / 12</option>
+              <option value="21">21 / 12</option>
+              <option value="22">22 / 12</option>
+              <option value="23">23 / 12</option>
+              <option value="24">24 / 12</option>
+              <option value="25">25 / 12</option>
+              <option value="26">26 / 12</option>
+              <option value="27">27 / 12</option>
+              <option value="28">28 / 12</option>
+              <option value="29">29 / 12</option>
+              <option value="30">30 / 12</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="rafterSpacing" id="lbl-rafter-spacing">Rafter Spacing (in O.C.)</label>
+            <select id="rafterSpacing">
+              <option value="12">12"</option>
+              <option value="16" selected>16"</option>
+              <option value="24">24"</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="ridgeType" id="lbl-ridge-type">Ridge Type</label>
+            <select id="ridgeType">
+              <option value="none" id="opt-rt-none">No Ridge Board (Rafters Meet)</option>
+              <option value="single" id="opt-rt-single" selected>Single Ridge Board</option>
+              <option value="double" id="opt-rt-double">Double Ridge Board</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-lumber-title">Framing Lumber</h2>
+        <p class="section-sub" id="txt-lumber-sub">
+          Choose lumber sizes for rafters, ridge, and fascia.
+        </p>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="rafterLumber" id="lbl-rafter-lumber">Rafter Lumber</label>
+            <select id="rafterLumber">
+              <option value="2x4">2x4</option>
+              <option value="2x6" selected>2x6</option>
+              <option value="2x8">2x8</option>
+              <option value="2x10">2x10</option>
+              <option value="2x12">2x12</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="ridgeLumber" id="lbl-ridge-lumber">Ridge Lumber</label>
+            <select id="ridgeLumber">
+              <option value="none" id="opt-rl-none">None</option>
+              <option value="2x6">2x6</option>
+              <option value="2x8" selected>2x8</option>
+              <option value="2x10">2x10</option>
+              <option value="2x12">2x12</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="fasciaLumber" id="lbl-fascia-lumber">Fascia Lumber</label>
+            <select id="fasciaLumber">
+              <option value="1x6" selected>1x6</option>
+              <option value="1x8">1x8</option>
+              <option value="2x6">2x6</option>
+              <option value="2x8">2x8</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-cov-title">Roof Coverings</h2>
+        <p class="section-sub" id="txt-cov-sub">
+          Choose sheathing and roof finish for estimating materials.
+        </p>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="sheathingType" id="lbl-sheathing">Sheathing</label>
+            <select id="sheathingType">
+              <option value="none" id="opt-sh-none">None</option>
+              <option value="osb" id="opt-sh-osb12" selected>1/2" OSB / Plywood</option>
+              <option value="osb58" id="opt-sh-osb58">5/8" OSB / Plywood</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="roofCovering" id="lbl-roof-cov">Roof Covering</label>
+            <select id="roofCovering">
+              <option value="none" id="opt-rc-none">None</option>
+              <option value="metal" id="opt-rc-metal" selected>Galvanized Metal Panels</option>
+              <option value="poly" id="opt-rc-poly">Polycarbonate Sheets</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="wastePercent" id="lbl-waste">Waste %</label>
+            <input type="number" id="wastePercent" value="10" step="1" min="0" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-price-title">Material Pricing</h2>
+        <p class="section-sub" id="txt-price-sub">
+          Optional — only used for rough estimate totals.
+        </p>
+
+        <details class="price-panel">
+          <summary id="txt-edit-prices">Edit Material Prices</summary>
+          <p class="price-note" id="txt-price-note">
+            Expand only if you want to adjust your local lumber and sheet prices.
+          </p>
+
+          <div id="dynamicPricingContainer">
+            <p>Loading prices...</p>
+          </div>
+        </details>
+
+        <div class="button-row no-print">
+          <button id="calculateBtn" class="primary-btn" type="button">Calculate Estimate</button>
+          <button id="printBtn" class="secondary-btn" type="button">Print Estimate</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-res-guide-title">Estimated Roof Materials & Framing Guide</h2>
+        <p class="results-note" id="txt-res-guide-note">
+          This calculator is intended for rough estimating and planning. Always verify dimensions, framing layout, structural requirements, and local code before building.
+        </p>
+
+        <div id="resultsContent">
+          <p class="section-sub" id="txt-res-initial">Run the calculator to see your estimate.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <section class="print-sheet">
+    <h1 id="txt-print-main-title">Gable Roof Calculator Estimate</h1>
+    <p id="printDate">Estimate Date:</p>
+
+    <div class="print-two-col">
+      <div class="print-section">
+        <h2 id="txt-print-roof-info">Roof Info</h2>
+        <div id="printRoofInfo"></div>
+      </div>
+
+      <div class="print-section">
+        <h2 id="txt-print-framing">Framing Results</h2>
+        <div id="printFraming"></div>
+      </div>
+    </div>
+
+    <div class="print-two-col">
+      <div class="print-section">
+        <h2 id="txt-print-materials">Estimated Materials</h2>
+        <div id="printMaterials"></div>
+      </div>
+
+      <div class="print-section">
+        <h2 id="txt-print-costs">Costs</h2>
+        <div id="printCosts"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="translations.js"></script>
+  <script src="pricing.js"></script>
+  <script src="roof.js"></script>
+  
+  <script>
+    function changeLang(lang) {
+      localStorage.setItem('prefLang', lang);
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      
+      const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : null;
+      if (!t) return;
+
+      const setTxt = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
+
+      setTxt('txt-page-meta-title', t.roofPageTitle || "Gable Roof Calculator");
+      setTxt('txt-site-header-title', t.siteHeaderTitle || "Construction Material Calculator");
+      setTxt('txt-site-header-desc', t.siteHeaderDesc || "Simple estimating tools for framing, roofing, and stairs.");
+      setTxt('txt-back-home', t.backHome || "← Back to Home");
+
+      setTxt('txt-roof-page-title', t.roofPageTitle || "Gable Roof Calculator");
+      setTxt('txt-roof-page-sub', t.roofPageSub || "Estimate rafters, ridge, fascia, sheathing, roof sheets, and rough cost for a simple gable roof.");
+
+      setTxt('txt-setup-title', t.setupTitle || "Roof Setup");
+      setTxt('txt-setup-sub', t.setupSub || "Enter the basic size and framing layout for your gable roof.");
+      
+      setTxt('lbl-span', t.lblSpan || "Span (ft)");
+      setTxt('lbl-struct-length', t.lblStructLength || "Structure Length (ft)");
+      setTxt('lbl-overhang', t.lblOverhang || "Overhang (in)");
+      setTxt('lbl-pitch', t.lblPitch || "Roof Pitch");
+      setTxt('lbl-rafter-spacing', t.lblRafterSpacing || "Rafter Spacing (in O.C.)");
+      
+      setTxt('lbl-ridge-type', t.lblRidgeType || "Ridge Type");
+      setTxt('opt-rt-none', t.optRidgeNone || "No Ridge Board (Rafters Meet)");
+      setTxt('opt-rt-single', t.optRidgeSingle || "Single Ridge Board");
+      setTxt('opt-rt-double', t.optRidgeDouble || "Double Ridge Board");
+
+      setTxt('txt-lumber-title', t.framingLumberTitle || "Framing Lumber");
+      setTxt('txt-lumber-sub', t.framingLumberSub || "Choose lumber sizes for rafters, ridge, and fascia.");
+      setTxt('lbl-rafter-lumber', t.lblRafterLumber || "Rafter Lumber");
+      setTxt('lbl-ridge-lumber', t.lblRidgeLumber || "Ridge Lumber");
+      setTxt('opt-rl-none', t.valRidgeNone || "None");
+      setTxt('lbl-fascia-lumber', t.lblFasciaLumber || "Fascia Lumber");
+
+      setTxt('txt-cov-title', t.roofCovTitle || "Roof Coverings");
+      setTxt('txt-cov-sub', t.roofCovSub || "Choose sheathing and roof finish for estimating materials.");
+      setTxt('lbl-sheathing', t.lblSheathing || "Sheathing");
+      setTxt('opt-sh-none', t.optSheathNone || "None");
+      setTxt('opt-sh-osb12', t.optSheathOsb12 || "1/2\" OSB / Plywood");
+      setTxt('opt-sh-osb58', t.optSheathOsb58 || "5/8\" OSB / Plywood");
+      
+      setTxt('lbl-roof-cov', t.lblRoofCov || "Roof Covering");
+      setTxt('opt-rc-none', t.optCovNone || "None");
+      setTxt('opt-rc-metal', t.optCovMetal || "Galvanized Metal Panels");
+      setTxt('opt-rc-poly', t.optCovPoly || "Polycarbonate Sheets");
+
+      setTxt('lbl-waste', t.lblWaste || "Waste %");
+
+      setTxt('txt-price-title', t.pricingTitle || "Material Pricing");
+      setTxt('txt-price-sub', t.pricingSub || "Optional — only used for rough estimate totals.");
+      setTxt('txt-edit-prices', t.editPricesTitle || "Edit Material Prices");
+      setTxt('txt-price-note', t.editPricesNote || "Expand only if you want to adjust your local lumber and sheet prices.");
+
+      setTxt('calculateBtn', t.btnCalculate || "Calculate Estimate");
+      setTxt('printBtn', t.btnPrint || "Print Estimate");
+
+      setTxt('txt-res-guide-title', t.resultsGuideTitle || "Estimated Roof Materials & Framing Guide");
+      setTxt('txt-res-guide-note', t.resultsGuideNote || "This calculator is intended for rough estimating and planning. Always verify dimensions, framing layout, structural requirements, and local code before building.");
+      setTxt('txt-res-initial', t.resultsInitial || "Run the calculator to see your estimate.");
+
+      setTxt('txt-footer-note', t.wallFooterNote || "For rough estimating only. Verify with actual plans and local code requirements.");
+
+      setTxt('txt-print-main-title', t.printRoofEst || "Gable Roof Calculator Estimate");
+      setTxt('txt-print-roof-info', t.printRoofInfo || "Roof Info");
+      setTxt('txt-print-framing', t.printFramingRes || "Framing Results");
+      setTxt('txt-print-materials', t.resEstMaterials || "Estimated Materials");
+      setTxt('txt-print-costs', t.resEstCost || "Costs");
+
+      // Si el usuario ya calculó, regeneramos los resultados para traducirlos dinámicamente
+      if (document.querySelector('.results-grid') && typeof calculateRoof === 'function') {
+         calculateRoof();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('prefLang') || 'es';
+      changeLang(savedLang);
+    });
+  </script>
+
+  <footer class="site-footer no-print">
+    <p id="txt-footer-note">For rough estimating only. Verify with actual plans and local code requirements.</p>
+  </footer>
+</body>
+</html>

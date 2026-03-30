@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="txt-page-meta-title">Wall Material & Framing Estimate</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .lang-switch { text-align: right; margin-bottom: 15px; font-weight: bold; }
+    .lang-link { cursor: pointer; color: #2563eb; text-decoration: underline; }
+    .lang-link.active { color: #1f2937; text-decoration: none; cursor: default; }
+    .separator { margin: 0 5px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header no-print">
+    <div class="site-header-inner">
+      <h1 id="txt-site-header-title">Construction Material Calculator</h1>
+      <p id="txt-site-header-desc">Simple estimating tools for framing, roofing, and stairs.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="no-print" style="margin-bottom: 16px;">
+      <a class="link-btn" href="index.html" id="txt-back-home">← Back to Home</a>
+    </div>
+
+    <div class="lang-switch no-print">
+      <span id="btn-es" class="lang-link active" onclick="changeLang('es')">Español</span>
+      <span class="separator">/</span>
+      <span id="btn-en" class="lang-link" onclick="changeLang('en')">English</span>
+    </div>
+
+    <h1 class="page-title" id="txt-wall-page-title">Wall Calculator</h1>
+    <p class="page-subtitle" id="txt-wall-page-sub">Estimate studs, plates, sheathing, drywall, rough cut list, and total cost for wood stud walls.</p>
+
+  <main class="main-content">
+    <div class="container">
+
+      <section class="card">
+        <h2 id="txt-setup-title">Wall Setup</h2>
+        <p class="section-sub" id="txt-setup-sub">
+          Start with your wall type, size, spacing, and framing setup.
+        </p>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="wallType" id="txt-lbl-wall-type">Wall Type</label>
+            <select id="wallType">
+              <option value="load" id="opt-load">Load Bearing Wall</option>
+              <option value="nonload" id="opt-nonload">Non-Load Bearing Wall</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="studSize" id="txt-lbl-stud-size">Stud Size</label>
+            <select id="studSize">
+              <option value="2x4">2x4</option>
+              <option value="2x6">2x6</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="wallLength" id="txt-lbl-wall-length">Wall Length (ft)</label>
+            <input type="number" id="wallLength" value="12" step="0.01" min="1" />
+          </div>
+
+          <div class="input-group">
+            <label for="studSpacing" id="txt-lbl-stud-spacing">Stud Spacing (in O.C.)</label>
+            <select id="studSpacing">
+              <option value="12">12"</option>
+              <option value="16" selected>16"</option>
+              <option value="24">24"</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="heightMode" id="txt-lbl-height-mode">Wall Height Type</label>
+            <select id="heightMode">
+              <option value="standard8" id="opt-std8">Standard 8' Wall</option>
+              <option value="standard9" id="opt-std9">Standard 9' Wall</option>
+              <option value="custom" id="opt-custom">Custom Height</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="wallHeight" id="txt-lbl-wall-height">Custom Rough Wall Height (in)</label>
+            <input type="number" id="wallHeight" value="97.125" step="0.125" min="1" disabled />
+            <small class="field-note" id="txt-note-custom">
+              Only used when "Custom Height" is selected.
+            </small>
+          </div>
+
+          <div class="input-group">
+            <label for="topPlates" id="txt-lbl-top-plates">Top Plates</label>
+            <select id="topPlates">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="bottomPlates" id="txt-lbl-bot-plates">Bottom Plates</label>
+            <select id="bottomPlates">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="ptBottomPlate" id="txt-lbl-pt-plate">Pressure Treated Bottom Plate</label>
+            <select id="ptBottomPlate">
+              <option value="yes" id="opt-pt-yes">Yes</option>
+              <option value="no" id="opt-pt-no">No</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="californiaCorners" id="txt-lbl-corners">California Corners</label>
+            <select id="californiaCorners">
+              <option value="0" id="opt-corn-no">No Extra Corner Studs</option>
+              <option value="2" id="opt-corn-yes" selected>Yes (1 extra stud per corner)</option>
+            </select>
+            <small class="field-note" id="txt-note-corners">
+              Adds one extra full stud at each end of the wall.
+            </small>
+          </div>
+
+          <div class="input-group">
+            <label for="wastePercent" id="txt-lbl-waste">Waste %</label>
+            <input type="number" id="wastePercent" value="10" step="1" min="0" />
+          </div>
+          
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-openings-title">Openings</h2>
+        <p class="section-sub" id="txt-openings-sub">
+          Add doors and windows if needed.
+        </p>
+
+        <div class="mini-section">
+          <h3 id="txt-doors-title">Doors</h3>
+          <div class="form-grid-3">
+            <div class="input-group">
+              <label for="doorCount" id="txt-lbl-door-count">Door Count</label>
+              <input type="number" id="doorCount" value="1" step="1" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="doorWidth" id="txt-lbl-door-width">Door Width (in)</label>
+              <input type="number" id="doorWidth" value="36" step="0.125" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="doorHeight" id="txt-lbl-door-height">Door Height (in)</label>
+              <input type="number" id="doorHeight" value="80" step="0.125" min="0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-section">
+          <h3 id="txt-windows-title">Windows</h3>
+          <div class="form-grid-3">
+            <div class="input-group">
+              <label for="windowCount" id="txt-lbl-win-count">Window Count</label>
+              <input type="number" id="windowCount" value="0" step="1" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="windowWidth" id="txt-lbl-win-width">Window Width (in)</label>
+              <input type="number" id="windowWidth" value="36" step="0.125" min="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="windowHeight" id="txt-lbl-win-height">Window Height (in)</label>
+              <input type="number" id="windowHeight" value="48" step="0.125" min="0" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-cov-title">Wall Coverings</h2>
+        <p class="section-sub" id="txt-cov-sub">
+          Select what goes on each side of the wall.
+        </p>
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="side1Cover" id="txt-lbl-side1">Side 1 Covering</label>
+            <select id="side1Cover">
+              <option value="none" id="opt-cov1-none">None</option>
+              <option value="plywood" id="opt-cov1-ply">Plywood / OSB</option>
+              <option value="drywall" id="opt-cov1-dry">Drywall</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="side2Cover" id="txt-lbl-side2">Side 2 Covering</label>
+            <select id="side2Cover">
+              <option value="none" id="opt-cov2-none">None</option>
+              <option value="plywood" id="opt-cov2-ply">Plywood / OSB</option>
+              <option value="drywall" id="opt-cov2-dry">Drywall</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-price-title">Material Pricing</h2>
+        <p class="section-sub" id="txt-price-sub">
+          Optional — only used for rough estimate totals.
+        </p>
+
+        <details class="price-panel">
+          <summary id="txt-edit-prices">Edit Material Prices</summary>
+          <p class="price-note" id="txt-price-note">
+            Expand only if you want to adjust your local lumber and sheet prices.
+          </p>
+
+          <div id="dynamicPricingContainer">
+            <p>Loading prices...</p>
+          </div>
+        </details>
+
+        <div class="button-row no-print">
+          <button id="calculateBtn" class="primary-btn" type="button">Calculate Estimate</button>
+          <button id="printBtn" class="secondary-btn" type="button">Print Estimate</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="txt-res-guide-title">Estimated Materials & Framing Guide</h2>
+        <p class="results-note" id="txt-res-guide-note">
+          This calculator is intended for rough estimating and planning. Always verify dimensions, framing layout, structural requirements, and local code before building.
+        </p>
+
+        <div id="resultsContent">
+          <p class="section-sub" id="txt-res-initial">Run the calculator to see your estimate.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <section class="print-sheet">
+    <h1 id="txt-print-main-title">Wall Material & Framing Estimate</h1>
+    <p id="printDate">Estimate Date:</p>
+
+    <div class="print-two-col">
+      <div class="print-section">
+        <h2 id="txt-print-wall-info">Wall Info</h2>
+        <div id="printWallInfo"></div>
+      </div>
+
+      <div class="print-section">
+        <h2 id="txt-print-openings">Openings</h2>
+        <div id="printOpenings"></div>
+      </div>
+    </div>
+
+    <div class="print-two-col">
+      <div class="print-section">
+        <h2 id="txt-print-materials">Estimated Materials</h2>
+        <div id="printMaterials"></div>
+      </div>
+
+      <div class="print-section">
+        <h2 id="txt-print-costs">Costs</h2>
+        <div id="printCosts"></div>
+      </div>
+    </div>
+
+    <div class="print-section compact-cut-guide">
+      <h2 id="txt-print-cut-guide">Estimated Cut Guide</h2>
+      <div id="printCutGuide"></div>
+    </div>
+  </section>
+
+  <script src="translations.js"></script>
+  <script src="pricing.js"></script>
+  <script src="wall.js"></script>
+  
+  <script>
+    function changeLang(lang) {
+      localStorage.setItem('prefLang', lang);
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      
+      const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : null;
+      if (!t) return;
+
+      const setTxt = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
+
+      setTxt('txt-page-meta-title', t.wallPageTitle || "Wall Material & Framing Estimate");
+      setTxt('txt-site-header-title', t.siteHeaderTitle || "Construction Material Calculator");
+      setTxt('txt-site-header-desc', t.siteHeaderDesc || "Simple estimating tools for framing, roofing, and stairs.");
+      setTxt('txt-back-home', t.backHome || "← Back to Home");
+
+      setTxt('txt-wall-page-title', t.wallPageTitle || "Wall Calculator");
+      setTxt('txt-wall-page-sub', t.wallPageSub || "Estimate studs, plates, sheathing, drywall, rough cut list, and total cost.");
+
+      setTxt('txt-setup-title', t.setupTitle || "Wall Setup");
+      setTxt('txt-setup-sub', t.setupSub || "Start with your wall type, size, spacing, and framing setup.");
+      
+      setTxt('txt-lbl-wall-type', t.lblWallType || "Wall Type");
+      setTxt('opt-load', t.optLoad || "Load Bearing Wall");
+      setTxt('opt-nonload', t.optNonLoad || "Non-Load Bearing Wall");
+      
+      setTxt('txt-lbl-stud-size', t.lblStudSize || "Stud Size");
+      setTxt('txt-lbl-wall-length', t.lblWallLength || "Wall Length (ft)");
+      setTxt('txt-lbl-stud-spacing', t.lblStudSpacing || "Stud Spacing (in O.C.)");
+      
+      setTxt('txt-lbl-height-mode', t.lblHeightMode || "Wall Height Type");
+      setTxt('opt-std8', t.optStandard8 || "Standard 8' Wall");
+      setTxt('opt-std9', t.optStandard9 || "Standard 9' Wall");
+      setTxt('opt-custom', t.optCustom || "Custom Height");
+      
+      setTxt('txt-lbl-wall-height', t.lblWallHeight || "Custom Rough Wall Height (in)");
+      setTxt('txt-note-custom', t.noteCustom || "Only used when 'Custom Height' is selected.");
+      
+      setTxt('txt-lbl-top-plates', t.lblTopPlates || "Top Plates");
+      setTxt('txt-lbl-bot-plates', t.lblBottomPlates || "Bottom Plates");
+      setTxt('txt-lbl-pt-plate', t.lblPtPlate || "Pressure Treated Bottom Plate");
+      setTxt('opt-pt-yes', t.optYes || "Yes");
+      setTxt('opt-pt-no', t.optNo || "No");
+      
+      setTxt('txt-lbl-corners', t.lblCorners || "California Corners");
+      setTxt('opt-corn-no', t.optNoCorners || "No Extra Corner Studs");
+      setTxt('opt-corn-yes', t.optYesCorners || "Yes (1 extra stud per corner)");
+      setTxt('txt-note-corners', t.noteCorners || "Adds one extra full stud at each end of the wall.");
+      
+      setTxt('txt-lbl-waste', t.lblWaste || "Waste %");
+
+      setTxt('txt-openings-title', t.openingsTitle || "Openings");
+      setTxt('txt-openings-sub', t.openingsSub || "Add doors and windows if needed.");
+      setTxt('txt-doors-title', t.doorsTitle || "Doors");
+      setTxt('txt-lbl-door-count', t.lblDoorCount || "Door Count");
+      setTxt('txt-lbl-door-width', t.lblDoorWidth || "Door Width (in)");
+      setTxt('txt-lbl-door-height', t.lblDoorHeight || "Door Height (in)");
+      
+      setTxt('txt-windows-title', t.windowsTitle || "Windows");
+      setTxt('txt-lbl-win-count', t.lblWindowCount || "Window Count");
+      setTxt('txt-lbl-win-width', t.lblWindowWidth || "Window Width (in)");
+      setTxt('txt-lbl-win-height', t.lblWindowHeight || "Window Height (in)");
+
+      setTxt('txt-cov-title', t.coveringsTitle || "Wall Coverings");
+      setTxt('txt-cov-sub', t.coveringsSub || "Select what goes on each side of the wall.");
+      setTxt('txt-lbl-side1', t.lblSide1 || "Side 1 Covering");
+      setTxt('txt-lbl-side2', t.lblSide2 || "Side 2 Covering");
+      setTxt('opt-cov1-none', t.optNone || "None");
+      setTxt('opt-cov1-ply', t.optPlywood || "Plywood / OSB");
+      setTxt('opt-cov1-dry', t.optDrywall || "Drywall");
+      setTxt('opt-cov2-none', t.optNone || "None");
+      setTxt('opt-cov2-ply', t.optPlywood || "Plywood / OSB");
+      setTxt('opt-cov2-dry', t.optDrywall || "Drywall");
+
+      setTxt('txt-price-title', t.pricingTitle || "Material Pricing");
+      setTxt('txt-price-sub', t.pricingSub || "Optional — only used for rough estimate totals.");
+      setTxt('txt-edit-prices', t.editPricesTitle || "Edit Material Prices");
+      setTxt('txt-price-note', t.editPricesNote || "Expand only if you want to adjust your local lumber and sheet prices.");
+
+      setTxt('calculateBtn', t.btnCalculate || "Calculate Estimate");
+      setTxt('printBtn', t.btnPrint || "Print Estimate");
+
+      setTxt('txt-res-guide-title', t.resultsGuideTitle || "Estimated Materials & Framing Guide");
+      setTxt('txt-res-guide-note', t.resultsGuideNote || "This calculator is intended for rough estimating and planning...");
+      setTxt('txt-res-initial', t.resultsInitial || "Run the calculator to see your estimate.");
+
+      setTxt('txt-footer-note', t.wallFooterNote || "For rough estimating only. Verify with actual plans and local code requirements.");
+
+      setTxt('txt-print-main-title', t.wallPageTitle || "Wall Material & Framing Estimate");
+      setTxt('txt-print-wall-info', t.printWallInfo || "Wall Info");
+      setTxt('txt-print-openings', t.openingsTitle || "Openings");
+      setTxt('txt-print-materials', t.resEstMaterials || "Estimated Materials");
+      setTxt('txt-print-costs', t.resEstCost || "Costs");
+      setTxt('txt-print-cut-guide', t.resCutGuide || "Estimated Cut Guide");
+
+      // Si el usuario ya calculó, regeneramos los resultados para traducirlos dinámicamente
+      if (document.querySelector('.results-grid') && typeof calculateWall === 'function') {
+         calculateWall();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('prefLang') || 'es';
+      changeLang(savedLang);
+    });
+  </script>
+
+  <footer class="site-footer no-print">
+    <p id="txt-footer-note">For rough estimating only. Verify with actual plans and local code requirements.</p>
+  </footer>
+</body>
+</html>

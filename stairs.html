@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="txt-page-meta-title">Stair Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header no-print">
+    <div class="site-header-inner">
+      <h1 id="txt-site-header-title">Construction Material Calculator</h1>
+      <p id="txt-site-header-desc">Simple estimating tools for framing, roofing, and stairs.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="no-print" style="margin-bottom: 16px;">
+      <a class="link-btn" href="index.html" id="txt-back-home">← Back to Home</a>
+    </div>
+
+    <div class="lang-switch no-print">
+      <span id="btn-es" class="lang-link active" onclick="changeLang('es')">Español</span>
+      <span class="separator">/</span>
+      <span id="btn-en" class="lang-link" onclick="changeLang('en')">English</span>
+    </div>
+
+    <style>
+      .lang-switch { text-align: right; margin-bottom: 15px; font-weight: bold; }
+      .lang-link { cursor: pointer; color: #2563eb; text-decoration: underline; }
+      .lang-link.active { color: #1f2937; text-decoration: none; cursor: default; }
+      .separator { margin: 0 5px; color: #9ca3af; }
+    </style>   
+
+    <h1 class="page-title" id="txt-stair-page-title">Stair Calculator</h1>
+    <p class="page-subtitle" id="txt-stair-page-sub">
+      Quick estimator for straight stairs using open stringers.
+    </p>
+
+    <section class="card">
+      <h2 id="txt-stair-inputs-title">Stair Inputs</h2>
+      <p class="section-sub" id="txt-stair-inputs-sub">
+        Enter your total height and preferred tread / rise values.
+      </p>
+
+      <div class="form-grid-3">
+        <div class="field">
+          <label for="totalHeight" id="lbl-total-height">Total Height (inches)</label>
+          <input type="number" id="totalHeight" value="105" min="1" step="0.01" />
+          <small id="txt-total-height-note">From finished floor below to finished floor above.</small>
+        </div>
+
+        <div class="field">
+          <label for="targetRise" id="lbl-target-rise">Target Rise per Step (inches)</label>
+          <input type="number" id="targetRise" value="7" min="1" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label for="treadDepth" id="lbl-tread-depth">Tread Depth / Run (inches)</label>
+          <input type="number" id="treadDepth" value="10" min="1" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label for="nosing" id="lbl-nosing">Tread Overhang / Nosing (inches)</label>
+          <input type="number" id="nosing" value="1" min="0" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label for="stairWidth" id="lbl-stair-width">Stair Width (inches)</label>
+          <input type="number" id="stairWidth" value="36" min="1" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label for="stringerLumber" id="lbl-stringer-lumber">Stringer Lumber</label>
+          <select id="stringerLumber">
+            <option value="2x10">2x10</option>
+            <option value="2x12" selected>2x12</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="includeTreads" id="lbl-include-treads">Include Treads?</label>
+          <select id="includeTreads">
+            <option value="yes" id="opt-tread-yes" selected>Yes</option>
+            <option value="no" id="opt-tread-no">No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="treadBoardType" id="lbl-tread-board-type">Tread Board Material</label>
+          <select id="treadBoardType">
+            <option value="2x10" selected>2x10</option>
+            <option value="2x12">2x12</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="treadThickness" id="lbl-tread-thickness">Tread Thickness (inches)</label>
+          <input type="number" id="treadThickness" value="1.5" min="0" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label for="closedRisers" id="lbl-closed-risers">Closed Risers?</label>
+          <select id="closedRisers">
+            <option value="no" id="opt-riser-no" selected>No</option>
+            <option value="yes" id="opt-riser-yes">Yes</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="riserMaterial" id="lbl-riser-material">Riser Material</label>
+          <select id="riserMaterial">
+            <option value="1x8" selected>1x8</option>
+            <option value="1x10">1x10</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="wastePercent" id="lbl-waste-percent">Waste %</label>
+          <input type="number" id="wastePercent" value="10" min="0" step="0.01" />
+        </div>
+
+        <!-- <div class="field">
+          <label for="taxRate" id="lbl-tax-rate">Tax %</label>
+          <input type="number" id="taxRate" value="11.5" min="0" step="0.01" />
+        </div> -->
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="txt-price-title">Material Pricing</h2>
+      <p class="section-sub" id="txt-price-sub">
+        Optional — only used for rough estimate totals.
+      </p>
+
+      <details class="price-panel">
+        <summary id="txt-edit-prices">Edit Material Prices</summary>
+        <p class="price-note" id="txt-price-note">
+          Expand only if you want to adjust your local lumber and sheet prices.
+        </p>
+
+        <div id="dynamicPricingContainer">
+          <p>Loading prices...</p>
+        </div>
+      </details>
+
+      <div class="button-row no-print">
+        <button id="calculateBtn" class="primary-btn" type="button">Calculate Estimate</button>
+        <button id="printBtn" class="secondary-btn" type="button">Print Estimate</button>
+      </div>
+    </section>
+
+    <section id="resultsSection" class="card">
+      <h2 id="txt-results-header">Results</h2>
+      <div id="resultsContent">
+        <p id="txt-results-initial">Enter your stair information and tap <strong>Calculate Estimate</strong>.</p>
+      </div>
+    </section>
+
+    <section class="print-sheet" id="printSheet">
+      <h1 id="txt-print-main-title">Stair Material Estimate</h1>
+      <p id="printDate"></p>
+
+      <div class="print-two-col">
+        <div class="print-section">
+          <h2 id="txt-print-stair-info">Summary</h2>
+          <div id="printStairInfo"></div>
+        </div>
+
+        <div class="print-section">
+          <h2 id="txt-print-mat">Estimated Materials</h2>
+          <div id="printMaterials"></div>
+        </div>
+      </div>
+
+      <div class="print-two-col">
+        <div class="print-section">
+          <h2 id="txt-print-cost">Estimated Cost</h2>
+          <div id="printCosts"></div>
+        </div>
+
+        <div class="print-section">
+          <h2 id="txt-print-cut-guide">Cut Guides</h2>
+          <div id="printCutGuides"></div>
+        </div>
+      </div>
+
+      <div class="print-section compact-cut-guide">
+        <h2 id="txt-print-geom">Geometry Summary</h2>
+        <div id="printGeometry"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer no-print">
+    <p id="txt-footer-note">For rough estimating only. Verify with actual plans and local code requirements.</p>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="pricing.js"></script>
+  <script src="stairs.js"></script>
+
+  <script>
+    function changeLang(lang) {
+      localStorage.setItem('prefLang', lang);
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      
+      const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : null;
+      if (!t) return;
+
+      const setTxt = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
+
+      setTxt('txt-page-meta-title', t.stairTitle || "Stair Calculator");
+      setTxt('txt-site-header-title', t.siteHeaderTitle || "Construction Material Calculator");
+      setTxt('txt-site-header-desc', t.siteHeaderDesc || "Simple estimating tools for framing, roofing, and stairs.");
+      setTxt('txt-back-home', t.backHome || "← Back to Home");
+
+      setTxt('txt-stair-page-title', t.stairTitle || "Stair Calculator");
+      setTxt('txt-stair-page-sub', t.stairPageSub || "Quick estimator for straight stairs using open stringers.");
+      
+      setTxt('txt-stair-inputs-title', t.stairInputsTitle || "Stair Inputs");
+      setTxt('txt-stair-inputs-sub', t.stairInputsSub || "Enter your total height and preferred tread / rise values.");
+      
+      setTxt('lbl-total-height', t.lblTotalHeight || "Total Height (inches)");
+      setTxt('txt-total-height-note', t.txtTotalHeightNote || "From finished floor below to finished floor above.");
+      setTxt('lbl-target-rise', t.lblTargetRise || "Target Rise per Step (inches)");
+      setTxt('lbl-tread-depth', t.lblTreadDepth || "Tread Depth / Run (inches)");
+      setTxt('lbl-nosing', t.lblNosing || "Tread Overhang / Nosing (inches)");
+      setTxt('lbl-stair-width', t.lblStairWidth || "Stair Width (inches)");
+      setTxt('lbl-stringer-lumber', t.lblStringerLumber || "Stringer Lumber");
+      setTxt('lbl-include-treads', t.lblIncludeTreads || "Include Treads?");
+      setTxt('opt-tread-yes', t.optYes || "Yes");
+      setTxt('opt-tread-no', t.optNo || "No");
+      setTxt('lbl-tread-board-type', t.lblTreadBoardType || "Tread Board Material");
+      setTxt('lbl-tread-thickness', t.lblTreadThickness || "Tread Thickness (inches)");
+      setTxt('lbl-closed-risers', t.lblClosedRisers || "Closed Risers?");
+      setTxt('opt-riser-yes', t.optYes || "Yes");
+      setTxt('opt-riser-no', t.optNo || "No");
+      setTxt('lbl-riser-material', t.lblRiserMaterial || "Riser Material");
+      setTxt('lbl-waste-percent', t.lblWaste || "Waste %");
+      // setTxt('lbl-tax-rate', t.lblTaxRate || "Tax %");
+
+      setTxt('txt-price-title', t.pricingTitle || "Material Pricing");
+      setTxt('txt-price-sub', t.pricingSub || "Optional — only used for rough estimate totals.");
+      setTxt('txt-edit-prices', t.editPricesTitle || "Edit Material Prices");
+      setTxt('txt-price-note', t.editPricesNote || "Expand only if you want to adjust your local lumber and sheet prices.");
+
+      setTxt('calculateBtn', t.btnCalculate || "Calculate Estimate");
+      setTxt('printBtn', t.btnPrint || "Print Estimate");
+
+      setTxt('txt-results-header', t.stairResults || "Results");
+      setTxt('txt-results-initial', t.resultsInitial || "Enter your stair information and tap <strong>Calculate Estimate</strong>.");
+
+      setTxt('txt-footer-note', t.wallFooterNote || "For rough estimating only. Verify with actual plans and local code requirements.");
+
+      setTxt('txt-print-main-title', t.printStairEst || "Stair Material Estimate");
+      setTxt('txt-print-stair-info', t.summary || "Summary");
+      setTxt('txt-print-geom', t.printGeomSum || "Geometry Summary");
+      setTxt('txt-print-mat', t.materials || "Estimated Materials");
+      setTxt('txt-print-cost', t.cost || "Estimated Cost");
+      setTxt('txt-print-cut-guide', t.resCutGuide || "Cut Guides");
+
+      // Trigger recalculation immediately if user already hit calculate
+      const resultsDiv = document.getElementById('resultsContent');
+      if (resultsDiv && resultsDiv.innerHTML.includes('results-grid') && typeof calculateStairs === 'function') {
+         calculateStairs();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('prefLang') || 'es';
+      changeLang(savedLang);
+    });
+  </script>
+</body>
+</html>
