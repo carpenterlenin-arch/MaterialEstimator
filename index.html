@@ -78,18 +78,26 @@
     <section class="card about-me-section" style="margin-bottom: 24px;">
       <div class="about-content">
         <div class="about-text">
-          <h2>About Me</h2>
-          <p>
-            I am a carpentry apprentice and independent carpenter based in Puerto Rico. 
-            I specialize in the design and construction of residential exterior structures 
-            like gazebos, pergolas, and decks.
-          </p>
-          <p>
-            My background in 3D animation and digital modeling allows me to approach 
-            construction with a focus on precision and structural integrity. I developed 
-            these tools to simplify material estimation and help others in the trade 
-            plan their projects more efficiently.
-          </p>
+          <h2 id="txt-about-title">About Me</h2>
+            <p id="txt-about-p1">
+                I am a carpentry apprentice and independent carpenter based in Puerto Rico. 
+                As a graduate of the HBI Build Strong Academy, I take advantage of 
+                technology to improve the design and building process. 
+            </p>
+            <p id="txt-about-p2">
+                My previous experience as a 3D artist allows me to bring digital precision 
+                to material estimation and project planning. While I enjoy all aspects 
+                of construction, I find the technical challenge of <strong>roof framing</strong> 
+                to be the most rewarding part of the trade.
+            </p>
+            <p id="txt-about-p3">
+                <strong>Lenin F. Garcia Cadiz</strong><br>
+                Carpentry Apprentice | HBI Build Strong Academy Graduate
+            </p>
+            <p id="txt-about-p4">
+                Email: <a href="mailto:carpenterlenin@gmail.com">carpenterlenin@gmail.com</a>
+            </p>          
+
         </div>
       </div>
     </section>    
@@ -117,7 +125,13 @@
         soonDesc: "Próximamente: Gazebos, pergolas, decks y optimizadores de corte.",
         soonBtn: "Próximamente",
         noteTitle: "Nota Importante",
-        noteDesc: "Estas herramientas son solo para estimados preliminares. Siempre verifique dimensiones y códigos de construcción antes de construir."
+        noteDesc: "Estas herramientas son solo para estimados preliminares. Siempre verifique dimensiones y códigos de construcción antes de construir.",
+        // NUEVOS TEXTOS SOBRE MÍ (SPANISH)
+        aboutTitle: "Sobre Mí",
+        aboutP1: "Soy aprendiz de carpintería y carpintero independiente radicado en Puerto Rico. Como graduado de la HBI Build Strong Academy, aprovecho la tecnología para mejorar el proceso de diseño y construcción.",
+        aboutP2: "Mi experiencia previa como artista 3D me permite aportar precisión digital a la estimación de materiales y planificación de proyectos. Aunque disfruto todos los aspectos de la construcción, encuentro que el desafío técnico del <strong>armado de techos (roof framing)</strong> es la parte más gratificante del oficio.",
+        aboutP3: "<strong>Lenin F. Garcia Cadiz</strong><br>Aprendiz de Carpintería | Graduado de HBI Build Strong Academy",
+        aboutP4: "Correo: <a href='mailto:carpenterlenin@gmail.com'>carpenterlenin@gmail.com</a>"
       },
       en: {
         siteTitle: "Construction Material Calculator",
@@ -138,7 +152,13 @@
         soonDesc: "Future calculators can include sheds, pergolas, decks, and cut planners.",
         soonBtn: "Coming Soon",
         noteTitle: "Important Note",
-        noteDesc: "These tools are for rough estimating and planning only. Always verify actual dimensions and local code."
+        noteDesc: "These tools are for rough estimating and planning only. Always verify actual dimensions and local code.",
+        // NEW ABOUT ME TEXT (ENGLISH)
+        aboutTitle: "About Me",
+        aboutP1: "I am a carpentry apprentice and independent carpenter based in Puerto Rico. As a graduate of the HBI Build Strong Academy, I take advantage of technology to improve the design and building process.",
+        aboutP2: "My previous experience as a 3D artist allows me to bring digital precision to material estimation and project planning. While I enjoy all aspects of construction, I find the technical challenge of <strong>roof framing</strong> to be the most rewarding part of the trade.",
+        aboutP3: "<strong>Lenin F. Garcia Cadiz</strong><br>Carpentry Apprentice | HBI Build Strong Academy Graduate",
+        aboutP4: "Email: <a href='mailto:carpenterlenin@gmail.com'>carpenterlenin@gmail.com</a>"
       }
     };
 
@@ -172,6 +192,12 @@
       document.getElementById('btn-soon').innerText = t.soonBtn;
       document.getElementById('txt-note-title').innerText = t.noteTitle;
       document.getElementById('txt-note-desc').innerText = t.noteDesc;
+      // Actualizar textos de "About Me"
+      document.getElementById('txt-about-title').innerText = t.aboutTitle;
+      document.getElementById('txt-about-p1').innerText = t.aboutP1;
+      document.getElementById('txt-about-p2').innerHTML = t.aboutP2; // Usa innerHTML por los tags <strong>
+      document.getElementById('txt-about-p3').innerHTML = t.aboutP3; // Usa innerHTML por los tags <br> y <strong>
+      document.getElementById('txt-about-p4').innerHTML = t.aboutP4; // Usa innerHTML por el tag <a>
     }
 
     // Cargar idioma guardado al abrir
