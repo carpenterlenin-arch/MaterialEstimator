@@ -215,13 +215,31 @@
           Optional — only used for rough estimate totals.
         </p>
 
-        <details class="price-panel">
+        <!-- <details class="price-panel">
           <summary id="txt-edit-prices">Edit Material Prices</summary>
           <p class="price-note" id="txt-price-note">
             Expand only if you want to adjust your local lumber and sheet prices.
           </p>
 
           <div id="dynamicPricingContainer">
+            <p>Loading prices...</p>
+          </div>
+        </details> -->
+
+        <details class="pro-accordion">
+          <summary class="pro-summary">
+            <div class="summary-text">
+              <strong id="txt-edit-prices">Edit Material Prices</strong>
+              <span id="txt-price-note"> Click here to adjust local lumber and sheet prices</span>
+            </div>
+            <div class="summary-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </summary>
+          
+          <div id="dynamicPricingContainer" class="pro-content">
             <p>Loading prices...</p>
           </div>
         </details>

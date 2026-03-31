@@ -485,3 +485,71 @@ details.price-panel[open] {
   font-size: 1rem;
   line-height: 1.6;
 }
+
+/* The main container */
+.pro-accordion {
+  border: 1px solid #cbd5e1; /* Subtle slate border */
+  border-radius: 8px;
+  background-color: #ffffff;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Very light shadow to lift it */
+}
+
+/* The clickable header */
+.pro-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background-color: #f8fafc; /* Very light gray/blue background */
+  border-radius: 8px;
+  list-style: none; /* Removes the default HTML triangle */
+  transition: background-color 0.2s ease;
+}
+
+/* Removes default arrow specifically for Safari/Webkit */
+.pro-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Make it obvious it's clickable on hover */
+.pro-summary:hover {
+  background-color: #f1f5f9;
+}
+
+/* When the accordion is OPEN, change the border radius of the header */
+.pro-accordion[open] .pro-summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+/* Typography */
+.summary-text strong {
+  display: block;
+  color: #0f172a;
+  font-size: 1.125rem;
+}
+
+.summary-text span {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-top: 2px;
+}
+
+/* Smooth Arrow Animation */
+.summary-icon svg {
+  color: #64748b;
+  transition: transform 0.3s ease; /* Animate the spin */
+}
+
+/* Spin the arrow 180 degrees when open */
+.pro-accordion[open] .summary-icon svg {
+  transform: rotate(180deg);
+}
+
+/* Padding for the content inside */
+.pro-content {
+  padding: 1.25rem;
+}

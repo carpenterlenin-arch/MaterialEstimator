@@ -346,8 +346,8 @@ function calculateWall() {
           <li><strong>${t.resWallType || "Wall Type:"}</strong> ${cfg.wallType === "load" ? (t.optLoad || "Load Bearing") : (t.optNonLoad || "Non-Load Bearing")}</li>
           <li><strong>${t.resStudSize || "Stud Size:"}</strong> ${cfg.studSize}</li>
           <li><strong>${t.resWallLength || "Wall Length:"}</strong> ${cfg.wallLengthFt}'</li>
-          <li><strong>${t.resRoughHeight || "Rough Wall Height:"}</strong> ${round2(cfg.roughWallHeight)}" (${inchesToFeetInches(cfg.roughWallHeight)})</li>
-          <li><strong>${t.resCutLength || "Cut Stud Length:"}</strong> ${round2(fullStudLength)}" (${inchesToFeetInches(fullStudLength)})</li>
+          <li><strong>${t.resRoughHeight || "Rough Wall Height:"}</strong> ${inchesToFeetInches(cfg.roughWallHeight)}</li>
+          <li><strong>${t.resCutLength || "Cut Stud Length:"}</strong> ${inchesToFeetInches(fullStudLength)}</li>
           <li><strong>${t.resStudSpacing || "Stud Spacing:"}</strong> ${cfg.studSpacing}" O.C.</li>
         </ul>
       </div>
@@ -387,6 +387,7 @@ function calculateWall() {
           <li><strong>${t.resCostHeaders || "Headers:"}</strong> ${formatMoney(headerCost)}</li>
           <li><strong>${t.resCostPly || "Plywood / OSB:"}</strong> ${formatMoney(plywoodCost)}</li>
           <li><strong>${t.resCostDry || "Drywall:"}</strong> ${formatMoney(drywallCost)}</li>
+          <hr style="border: none; border-top: 1px solid #ccc; margin: 10px 0;" />
           <li><strong>${t.resSubtotal || "Subtotal:"}</strong> ${formatMoney(subtotal)}</li>
           <li><strong>${t.resTax || "Tax"} (${round2(taxRate)}%):</strong> ${formatMoney(taxAmount)}</li>
           <li><strong>${t.resTotal || "Total:"}</strong> ${formatMoney(total)}</li>
@@ -396,12 +397,12 @@ function calculateWall() {
       <div class="result-box">
         <h3>${t.resCutGuide || "Estimated Cut Guide"}</h3>
         <ul>
-          <li><strong>${t.resCutFull || "Full Studs / King Studs:"}</strong> ${round2(fullStudLength)}"</li>
-          <li><strong>${t.resCutJack || "Jack Studs:"}</strong> ${round2(jackStudLength)}"</li>
-          <li><strong>${t.resCutDoorCrip || "Door Cripples:"}</strong> ${round2(doorCrippleLength)}"</li>
-          <li><strong>${t.resCutWinTopCrip || "Window Top Cripples:"}</strong> ${round2(windowTopCrippleLength)}"</li>
-          <li><strong>${t.resCutWinBotCrip || "Window Bottom Cripples:"}</strong> ${round2(windowBottomCrippleLength)}"</li>
-          <li><strong>${t.resCutWinSill || "Window Sill Length:"}</strong> ${round2(sillLength)}"</li>
+          <li><strong>${t.resCutFull || "Full Studs / King Studs:"}</strong> ${inchesToFeetInches(fullStudLength)}</li>
+          <li><strong>${t.resCutJack || "Jack Studs:"}</strong> ${inchesToFeetInches(jackStudLength)}</li>
+          <li><strong>${t.resCutDoorCrip || "Door Cripples:"}</strong> ${inchesToFeetInches(doorCrippleLength)}</li>
+          <li><strong>${t.resCutWinTopCrip || "Window Top Cripples:"}</strong> ${inchesToFeetInches(windowTopCrippleLength)}</li>
+          <li><strong>${t.resCutWinBotCrip || "Window Bottom Cripples:"}</strong> ${inchesToFeetInches(windowBottomCrippleLength)}</li>
+          <li><strong>${t.resCutWinSill || "Window Sill Length:"}</strong> ${inchesToFeetInches(sillLength)}</li>
           <li><strong>${t.resCutHeadSize || "Header Stock Size:"}</strong> ${headerSize}</li>
         </ul>
       </div>
@@ -422,8 +423,8 @@ function calculateWall() {
       <p><strong>${t.resWallType || "Wall Type:"}</strong> ${cfg.wallType === "load" ? (t.optLoad || "Load Bearing") : (t.optNonLoad || "Non-Load Bearing")}</p>
       <p><strong>${t.resStudSize || "Stud Size:"}</strong> ${cfg.studSize}</p>
       <p><strong>${t.resWallLength || "Wall Length:"}</strong> ${cfg.wallLengthFt}'</p>
-      <p><strong>${t.resRoughHeight || "Rough Wall Height:"}</strong> ${round2(cfg.roughWallHeight)}"</p>
-      <p><strong>${t.resCutLength || "Cut Stud Length:"}</strong> ${round2(fullStudLength)}"</p>
+      <p><strong>${t.resRoughHeight || "Rough Wall Height:"}</strong> ${inchesToFeetInches(cfg.roughWallHeight)}</p>
+      <p><strong>${t.resCutLength || "Cut Stud Length:"}</strong> ${inchesToFeetInches(fullStudLength)}</p>
       <p><strong>${t.resStudSpacing || "Stud Spacing:"}</strong> ${cfg.studSpacing}" O.C.</p>
       <p><strong>${t.printTopPlates || "Top Plates:"}</strong> ${cfg.topPlates}</p>
       <p><strong>${t.printBotPlates || "Bottom Plates:"}</strong> ${cfg.bottomPlates}</p>
@@ -468,6 +469,7 @@ function calculateWall() {
       <p><strong>${t.resCostHeaders || "Headers:"}</strong> ${formatMoney(headerCost)}</p>
       <p><strong>${t.resCostPly || "Plywood / OSB:"}</strong> ${formatMoney(plywoodCost)}</p>
       <p><strong>${t.resCostDry || "Drywall:"}</strong> ${formatMoney(drywallCost)}</p>
+      <hr style="border: none; border-top: 1px solid #ccc; margin: 10px 0;" />
       <p><strong>${t.resSubtotal || "Subtotal:"}</strong> ${formatMoney(subtotal)}</p>
       <p><strong>${t.resTax || "Tax"}:</strong> ${formatMoney(taxAmount)}</p>
       <p><strong>${t.resTotal || "Total:"}</strong> ${formatMoney(total)}</p>
