@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="txt-page-meta-title">About Lenin F. Garcia | Digital Carpenter</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Specific styles for the About page layout */
+    .lang-switch { text-align: right; margin-bottom: 15px; font-weight: bold; }
+    .lang-link { cursor: pointer; color: #7ef1f1; text-decoration: underline; }
+    .lang-link.active { color: #d2d7df; text-decoration: none; cursor: default; }
+    .separator { margin: 0 5px; color: #9ca3af; }
+
+    /* --- BIO Section Layout --- */
+    .about-me-section .about-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr; /* 2 parts text, 1 part image */
+      gap: 30px;
+      align-items: start;
+    }
+    .about-me-section .about-image-wrapper img {
+      width: 100%;
+      max-width: 300px; /* limits size on large screens */
+      height: auto;
+      border-radius: 8px; /* matches card aesthetic */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    /* Mobile responsive: stack vertically */
+    @media (max-width: 768px) {
+      .about-me-section .about-content { grid-template-columns: 1fr; text-align: center; }
+      .about-me-section .about-image-wrapper { order: -1; margin-bottom: 20px; } /* image first on mobile */
+      .about-me-section .about-image-wrapper img { max-width: 200px; }
+    }
+
+    /* --- COMPACTED RESUME Section Layout --- */
+    .resume-download-section .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px; /* reduced from 20px */
+      margin-top: 10px; /* reduced from 15px */
+    }
+    .resume-card {
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px 16px; /* reduced padding for compact look */
+      text-align: left; /* aligned text next to icon */
+      text-decoration: none;
+      color: #1f2937;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: row; /* changed from column to row */
+      align-items: center;
+      gap: 12px; /* tighter gap */
+    }
+    .resume-card:hover { border-color: #3b82f6; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .resume-card .icon { font-size: 1.8rem; color: #6b7280; } /* smaller icon size */
+    .resume-card .version { font-weight: bold; font-size: 1rem; }
+    @media (max-width: 600px) { .resume-download-section .resume-grid { grid-template-columns: 1fr; } }
+
+    /* --- GALLERY Section Layout --- */
+    .portfolio-gallery .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 15px;
+    }
+    .project-card {
+      background-color: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden; /* ensures image corner radius */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+    .project-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    .project-card img { width: 100%; height: 200px; object-fit: cover; } /* keeps images consistent */
+    .project-card .card-content { padding: 15px; }
+    .project-card .type-tag {
+      display: inline-block;
+      background-color: #dbeafe;
+      color: #1e40af;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .project-card .project-title { margin: 0 0 8px 0; font-size: 1.1rem; }
+    .project-card .project-desc { color: #6b7280; font-size: 0.9rem; line-height: 1.5; margin: 0; }
+  </style>
+</head>
+<body>
+  <header class="site-header no-print">
+    <div class="site-header-inner">
+      <div class="lang-switch no-print">
+        <a href="index.html" style="margin-right: 15px; color: #7ef1f1; text-decoration: none;">Home / Inicio </a>
+        <span id="btn-es" class="lang-link active" onclick="changeLang('es')">Español</span>
+        <span class="separator">/</span>
+        <span id="btn-en" class="lang-link" onclick="changeLang('en')">English</span>
+      </div>
+      <h1 id="header-title">About Lenin F. Garcia</h1>
+      <p id="header-desc">HBI Academy Graduate | Carpentry Apprentice</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="no-print" style="margin-bottom: 16px;">
+      <a class="link-btn" href="index.html" id="txt-back-home">← Back to Calculators</a>
+    </div>
+
+    <section class="card about-me-section">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 id="txt-about-title">About Me</h2>
+          <p id="txt-about-p1">
+            I am a carpentry apprentice and independent carpenter based in Puerto Rico. 
+            As a graduate of the HBI Build Strong Academy, I take advantage of 
+            technology to improve the design and building process.
+          </p>
+          <p id="txt-about-p2">
+            My previous experience as a 3D artist allows me to bring digital precision 
+            to material estimation and project planning. While I enjoy all aspects 
+            of construction, I find the technical challenge of <strong>roof framing</strong> 
+            to be the most rewarding part of the trade.
+          </p>
+          <p id="txt-about-p3" class="price-note">
+            <strong>Lenin F. Garcia Cadiz</strong><br>
+            HBI Build Strong Academy Graduate | 2026
+          </p>
+          <p id="txt-about-p4">
+            Email: <a href="/cdn-cgi/l/email-protection#d2b1b3a0a2b7bca6b7a0beb7bcbbbc92b5bfb3bbbefcb1bdbf"><span class="__cf_email__" data-cfemail="f596948785909b81908799909b9c9bb59298949c99db969a98">[email&#160;protected]</span></a>
+          </p>
+        </div>
+        <div class="about-image-wrapper">
+          <img src="assets/img/Carpenter-Lenin.jpg" alt="Lenin F. Garcia in proper PPE" />
+        </div>
+      </div>
+    </section>
+
+    <section class="card resume-download-section">
+      <h2 id="txt-resume-title" style="margin-bottom: 5px;">Download My Resume (PDF)</h2>
+      <p class="section-sub" id="txt-resume-subtitle" style="margin-bottom: 5px;">Select your preferred language version.</p>
+      
+      <div class="resume-grid">
+        <a href="assets/docs/LENIN GARCIA _ Carpenter Assistant.pdf" target="_blank" class="resume-card">
+          <div class="icon">📄</div>
+          <div>
+            <div class="version">English Version</div>
+            <div class="file-info" style="font-size:0.8rem; color:#6b7280;">HBI Certified 2026</div>
+          </div>
+        </a>
+        
+        <a href="assets/docs/LENIN GARCIA _ Ayudante de Carpintero.pdf" target="_blank" class="resume-card">
+          <div class="icon">📄</div>
+          <div>
+            <div class="version">Versión en Español</div>
+            <div class="file-info" style="font-size:0.8rem; color:#6b7280;">Certificación HBI 2026</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- TODO: Featured Projects section — work in progress
+    <section class="card portfolio-gallery">
+      <h2 id="txt-gallery-title">Featured Projects</h2>
+      <p class="section-sub" id="txt-gallery-subtitle">A blend of physical builds and digital precision tools.</p>
+
+      <div class="gallery-grid">
+        <div class="project-card">
+          <img src="assets/img/project_wooden_gazebo.jpg" alt="Custom rectangular wooden gazebo structure" />
+          <div class="card-content">
+            <span class="type-tag" id="tag-construction">Construction</span>
+            <h4 class="project-title" id="txt-p1-title">Exterior Wooden Gazebo</h4>
+            <p class="project-desc" id="txt-p1-desc">Custom framing and design of a rectangular gazebo, featuring open open stringer stairs.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="assets/img/project_calculator_site.png" alt="Digital view of the material calculator interface" />
+          <div class="card-content">
+            <span class="type-tag" id="tag-digital">Digital Tool</span>
+            <h4 class="project-title" id="txt-p2-title">Construction Material Calculator Site</h4>
+            <p class="project-desc" id="txt-p2-desc">A bilingual web application (HML+Vanilla JS) developed to provide quick framing estimates, translating 3D precision to job site tools.</p>
+          </div>
+        </div>
+
+        </div>
+    </section>
+    -->
+  </main>
+
+  <footer class="site-footer no-print">
+    <p id="txt-footer-note">Digital Carpenter | Precisely Built for Puerto Rico</p>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="translations.js"></script>
+  <script>
+    function setTxt(id, text) { if(document.getElementById(id)) document.getElementById(id).innerText = text; }
+    function setHtml(id, html) { if(document.getElementById(id)) document.getElementById(id).innerHTML = html; }
+
+    function changeLang(lang) {
+      localStorage.setItem('prefLang', lang);
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      
+      const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : translations['en'];
+      
+      // Global header/footer
+      setTxt('header-title', t.siteHeaderTitle || "Construction Material Calculator");
+      setTxt('txt-back-home', t.backHome || "← Back to Calculators");
+      
+      // Bio Section
+      setTxt('txt-about-title', t.aboutTitle || "About Me");
+      setTxt('txt-about-p1', t.aboutP1 || "I am a carpentry apprentice...");
+      setHtml('txt-about-p2', t.aboutP2 || "My previous experience...");
+      setHtml('txt-about-p3', t.aboutP3 || "Lenin F. Garcia Cadiz...");
+      setHtml('txt-about-p4', t.aboutP4 || "Email...");
+
+      // Resume Section
+      setTxt('txt-resume-title', t.resumeTitle || "Download My Resume (PDF)");
+      setTxt('txt-resume-subtitle', t.resumeSubtitle || "Select your preferred language version.");
+
+      // Gallery Section
+      setTxt('txt-gallery-title', t.galleryTitle || "Featured Projects");
+      setTxt('txt-gallery-subtitle', t.gallerySubtitle || "A blend of physical builds and digital precision tools.");
+      
+      // Gallery tags
+      setTxt('tag-construction', t.tagConstruction || "Construction");
+      setTxt('tag-digital', t.tagDigital || "Digital Tool");
+
+      // Gallery item 1 (Physical)
+      setTxt('txt-p1-title', t.project1Title || "Exterior Wooden Gazebo");
+      setTxt('txt-p1-desc', t.project1Desc || "Custom framing of a rectangular gazebo...");
+
+      // Gallery item 2 (Calculator Site)
+      setTxt('txt-p2-title', t.project2Title || "Material Calculator Site");
+      setTxt('txt-p2-desc', t.project2Desc || "");
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('prefLang') || 'en';
+      changeLang(savedLang);
+    });

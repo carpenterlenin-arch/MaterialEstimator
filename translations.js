@@ -283,7 +283,31 @@ const translations = {
     printStairInfo: "Stair Info",
     printGeomSum: "Geometry Summary",
     printMatSum: "Material Summary",
-    printGenerated: "Generated:"
+    printGenerated: "Generated:",
+    // Global UI for About page
+    aboutBtnLink: "About Me",
+    backHome: "← Back to Calculators",
+    siteHeaderTitleAbout: "About Lenin F. Garcia",
+    siteHeaderDescAbout: "HBI Academy Graduate | Carpentry Apprentice",
+    // BIO Section (English)
+    aboutTitle: "About Me",
+    // These paragraphs come from your resumes
+    aboutP1: "I am a carpentry apprentice and independent carpenter based in Puerto Rico. As a graduate of the HBI Build Strong Academy, I take advantage of technology to improve the design and building process.",
+    aboutP2: "My previous experience as a 3D artist allows me to bring digital precision to material estimation and project planning. While I enjoy all aspects of construction, I find the technical challenge of roof framing to be the most rewarding part of the trade.",
+    aboutP3: "<strong>Lenin F. Garcia Cadiz</strong><br>Carpenter Assistant (HBI & OSHA-10 Certified)",
+    aboutP4: "Email: <a href='mailto:carpenterlenin@gmail.com'>carpenterlenin@gmail.com</a>",
+    // RESUME Section (English)
+    resumeTitle: "Download My Resume (PDF)",
+    resumeSubtitle: "Select your preferred language version.",
+    // GALLERY Section (English)
+    galleryTitle: "Featured Projects",
+    gallerySubtitle: "A blend of physical builds and digital precision tools.",
+    tagConstruction: "Construction",
+    tagDigital: "Digital Tool",
+    project1Title: "Custom Wooden Gazebo Structure",
+    project1Desc: "Custom framing of a rectangular gazebo structure, featuring open open stringer stairs.",
+    project2Title: "Construction Material Calculator Site",
+    project2Desc: "A bilingual web application developed (HML+Vanilla JS) to provide quick framing estimates. Translates technical precision from 3D modeling into accessible job site tools."
   },
   
   es: {
@@ -572,6 +596,30 @@ const translations = {
     printStairInfo: "Info de Escalera",
     printGeomSum: "Resumen de Geometría",
     printMatSum: "Resumen de Materiales",
-    printGenerated: "Generado:"
+    printGenerated: "Generado:",
+    // Global UI for About page
+    aboutBtnLink: "Sobre Mí",
+    backHome: "← Volver a Calculadoras",
+    siteHeaderTitleAbout: "Sobre Lenin F. Garcia",
+    siteHeaderDescAbout: "Graduado de HBI Academy | Aprendiz de Carpintero",
+    // BIO Section (Spanish)
+    aboutTitle: "Sobre Mí",
+    // Estos párrafos vienen de tus resúmenes
+    aboutP1: "Soy aprendiz de carpintería y carpintero independiente radicado en Puerto Rico. Como graduado de la HBI Build Strong Academy, aprovecho la tecnología para mejorar el proceso de diseño y construcción.",
+    aboutP2: "Mi experiencia previa como artista 3D me permite aportar precisión digital a la estimación de materiales y planificación de proyectos. Encuentro que el desafío técnico del <strong>armado de techos (roof framing)</strong> es la parte más gratificante del oficio.",
+    aboutP3: "<strong>Lenin F. Garcia Cadiz</strong><br>Ayudante de Carpintero (Certificación HBI y OSHA-10)",
+    aboutP4: "Email: <a href='mailto:carpenterlenin@gmail.com'>carpenterlenin@gmail.com</a>",
+    // RESUME Section (Spanish)
+    resumeTitle: "Descargar Mi Resumé (PDF)",
+    resumeSubtitle: "Seleccione su versión de idioma preferida.",
+    // GALLERY Section (Spanish)
+    galleryTitle: "Proyectos Destacados",
+    gallerySubtitle: "Una mezcla de construcciones físicas y herramientas digitales de precisión.",
+    tagConstruction: "Construcción",
+    tagDigital: "Herramienta Digital",
+    project1Title: "Estructura de Gazebo de Madera",
+    project1Desc: "Framing personalizado de una estructura de gazebo rectangular, incluyendo escaleras stringer abiertas.",
+    project2Title: "Sitio de Calculadoras de Materiales",
+    project2Desc: "Una aplicación web bilingüe desarrollada (HTML+ Vanilla JS) para proporcionar estimados rápidos de framing. Traduce la precisión técnica del modelado 3D en herramientas accesibles para la obra."
   }
 };
